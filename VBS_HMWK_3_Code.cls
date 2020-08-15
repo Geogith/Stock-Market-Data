@@ -1,0 +1,92 @@
+Option Explicit
+
+
+Sub Wallstreet_Test()
+
+'The VBA of Wallstreet
+'Add Ticker Symbol, Yearly Change in Ticker Prices,
+'Yearly Percent Change in Price,and Total Volume of Stock per Ticker
+'Solution should return Stock with Greatest % increase, Greatest % decrease,
+'and Greatest Total Volume
+'Loop Through All Sheets
+
+'Declare Variables first
+Dim WS As Worksheet
+Dim Ticker_Name As String
+Dim Open_Price, Close_Price, Yearly_Change, Percent_Change As Double
+Dim Rw, Col As Integer
+Dim i, LastRow, J, Z, YCLastRow As Long
+Dim Volume As LongLong
+
+For Each WS In ActiveWorkbook.Worksheets
+    WS.Activate
+    Volume = 0
+    Rw = 2 'Row = 2
+    LastRow = WS.Cells(Rows.Count, 1).End(xlUp).Row 'Determine the Last Row in each Workstheet
+    WS.Cells.Item(1, "I").Value = "Ticker"   'Add the heading showing Ticker, Year Change, Percent Change, and Total Stock Volume to column header
+    WS.Cells.Item(1, "J").Value = "Yearly Change"
+    WS.Cells.Item(1, "K").Value = "Percent Change"
+    WS.Cells.Item(1, "L").Value = "Total Stock Volume"
+    Open_Price = WS.Cells(2, 3).Value 'Set Initial Open Price and Loop through all ticker symbol
+    '---------------------------------------------------------------------------------------
+    'LOOPING THROUGH ROW AND COLUMN USING OPEN PRICE TO CALCULATE VARIABLES BASED ON TICKER
+    '---------------------------------------------------------------------------------------
+    For i = 2 To LastRow
+        Volume = Volume + WS.Cells(i, 7).Value  'Add Total Volume
+        If WS.Cells(i + 1, 1).Value <> WS.Cells(i, 1).Value Then
+            Ticker_Name = WS.Cells(i, 1).Value
+            WS.Cells(Rw, 9).Value = Ticker_Name
+            Close_Price = WS.Cells(i, 6).Value
+            Yearly_Change = Close_Price - Open_Price
+            WS.Cells(Rw, 10).Value = Yearly_Change     'Add Yearly Change
+            If Open_Price = 0 Then
+                Percent_Change = 1
+            Else
+                Percent_Change = (Yearly_Change / Open_Price)
+            End If
+            WS.Cells(Rw, 11).Value = Percent_Change
+            WS.Cells(Rw, 11).NumberFormat = "0.00%"
+            WS.Cells(Rw, 12).Value = Volume
+            Open_Price = WS.Cells(i + 1, 3) 'reset the Open Price
+            Volume = 0 'reset the Volume Total
+            If WS.Cells(Rw, 10).Value >= 0 Then  'Set the Cell Colors
+                WS.Cells(Rw, 10).Interior.ColorIndex = 10
+            Else
+                WS.Cells(Rw, 10).Interior.ColorIndex = 3
+            End If
+            Rw = Rw + 1 'Add Summary row counter
+        End If
+    Next i
+        
+    '-----------------------------------------------------------------------------------------------------------------
+    'Set the column for Greatest Percent Increase, Greatest Percent Decrease and Total Stock Volume for Ticker Symbol
+    '-----------------------------------------------------------------------------------------------------------------
+    WS.Cells(2, 15).Value = "Greatest % Increase"
+    WS.Cells(3, 15).Value = "Greatest % Decrease"
+    WS.Cells(4, 15).Value = "Greatest Total Volume"
+    WS.Cells(1, 16).Value = "Ticker"
+    WS.Cells(1, 17).Value = "Value"
+    
+    '----------------------------------------------------------------------------
+    'Review each row to find the greatest value and its correlative ticker symbol
+    '----------------------------------------------------------------------------
+    YCLastRow = WS.Cells(Rows.Count, 9).End(xlUp).Row
+    For Z = 2 To YCLastRow
+        If WS.Cells(Z, 11).Value = Application.WorksheetFunction.Max(WS.Range("K2:K" & YCLastRow)) Then
+            WS.Cells(2, 16).Value = Cells(Z, 9).Value
+            WS.Cells(2, 17).Value = Cells(Z, 11).Value
+            WS.Cells(2, 17).NumberFormat = "0.00%"
+        End If
+        If Cells(Z, 11).Value = Application.WorksheetFunction.Min(WS.Range("K2:K" & YCLastRow)) Then
+            WS.Cells(3, 16).Value = Cells(Z, 9).Value
+            WS.Cells(3, 17).Value = Cells(Z, 11).Value
+            WS.Cells(3, 17).NumberFormat = "0.00%"
+        End If
+        If Cells(Z, 12).Value = Application.WorksheetFunction.Max(WS.Range("L2:L" & YCLastRow)) Then
+            WS.Cells(4, 16).Value = Cells(Z, 9).Value
+            WS.Cells(4, 17).Value = Cells(Z, 12).Value
+        End If
+    Next Z
+Next WS
+
+End Sub
