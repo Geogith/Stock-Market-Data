@@ -1,2 +1,3 @@
 # Stock_Market_Data
-Visual Basic for Applications - Using VBA/Macro to analyze Stock Market Data
+Visual Basic for Applications - Using VBA scripting to analyze Stock Market Data
+ 
