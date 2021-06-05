@@ -1,5 +1,5 @@
 # Analyzing Stock Market data using Visual Basic for Applications/Macro Scripting
-__________________________________________________________
+
 
 # PURPOSE:
 
