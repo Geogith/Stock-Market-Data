@@ -1,4 +1,5 @@
 # Analyzing Stock Market data using Visual Basic for Applications/Macro Scripting
+_______________________________________________________________________________________________________________
  # PURPOSE:
  
 VBA scripting was created to loop through approximately 2800 company traded stocks on Wall Street. The scripting loops through all the stocks for one year, outputing information for three specific years: 2014, 2015 and 2016. 
