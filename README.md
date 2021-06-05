@@ -18,5 +18,5 @@ Screenshots for each year are shown below:
 
  # PURPOSE:
 
-VBA scripting was used to automate a routine task. The scripting could be applied to any year for the same 2800 company traded stocks. Scripting was tested to ensure repeatibility and that it ran efficiently. The script takes the tediousness out of a repetitive task with the click of a button.
+VBA scripting was used to automate a routine task. The scripting could be applied to any year for the same 2800 company traded stocks. Scripting was tested to ensure repeatibility and that it ran efficiently with the click of a button.
  
