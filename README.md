@@ -6,7 +6,9 @@ VBA scripting was created to loop through approximately 2800 company traded stoc
 
 The outputed information for each year are as follows:
 
-1) The ticker symbol, 2) Yearly change from opening price at the beginning of a given year to the closing price at the end of that year, 3)The percent change from opening price at the beginning of a given year to the closing price at the end of that year, 3)The total stock volume of the stock, and 4) Conditional formatting that will highlight positive price change in green and negative price change in red. VBA scripting also returns the stock with the "Greatest % Increase", "Greatest % Decrease" and "Greatest Total Volume" for each year analyzed. Screenshots for each year are shown below:
+1) The ticker symbol, 2) Yearly change from opening price at the beginning of a given year to the closing price at the end of that year, 3)The percent change from opening price at the beginning of a given year to the closing price at the end of that year, 3)The total stock volume of the stock, and 4) Conditional formatting that will highlight positive price change in green and negative price change in red. VBA scripting also returns the stock with the "Greatest % Increase", "Greatest % Decrease" and "Greatest Total Volume" for each year analyzed. 
+
+Screenshots for each year are shown below:
 
 ![image](https://user-images.githubusercontent.com/67766966/120905629-00830280-c619-11eb-8613-996c0c895348.png)
 
