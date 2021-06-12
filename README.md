@@ -20,3 +20,9 @@ Screenshots for each year are shown below:
 
 VBA scripting was used to automate a routine task. The scripting could be applied to any year for the same 2800 company traded stocks. Scripting was tested to ensure repeatibility and that it ran efficiently with the click of a button.
  
+   ______________________________________________________________________________________________________________________________________
+  
+  # Contact:
+  
+    Email: 
+    rocklady4@gmail.com
